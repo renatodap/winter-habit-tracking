@@ -1,0 +1,19 @@
+# Icon files should be placed here
+# You can generate PWA icons using tools like:
+# - https://realfavicongenerator.net/
+# - https://www.pwabuilder.com/imageGenerator
+
+# Required icon sizes:
+# - icon-72.png
+# - icon-96.png
+# - icon-128.png
+# - icon-144.png
+# - icon-152.png
+# - icon-192.png
+# - icon-384.png
+# - icon-512.png
+# - badge-72.png (for notification badge)
+
+# Quick generation with ImageMagick:
+# convert -size 512x512 -background "#0ea5e9" -fill white -gravity center -pointsize 240 label:"W" icon-512.png
+# Then resize for other sizes
