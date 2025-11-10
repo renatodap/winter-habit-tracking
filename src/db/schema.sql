@@ -23,20 +23,6 @@ CREATE TABLE IF NOT EXISTS habit_logs (
   UNIQUE(habit_id, date)
 );
 
--- Numeric logs: daily metrics (weight, calories, protein, etc.)
-CREATE TABLE IF NOT EXISTS numeric_logs (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  date TEXT NOT NULL, -- YYYY-MM-DD format
-  weight REAL, -- kg or lbs
-  calories INTEGER,
-  protein INTEGER, -- grams
-  training_minutes INTEGER,
-  sleep_hours REAL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  UNIQUE(date)
-);
-
 -- Reminders: notification settings
 CREATE TABLE IF NOT EXISTS reminders (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -51,7 +37,6 @@ CREATE TABLE IF NOT EXISTS reminders (
 -- Indexes for performance
 CREATE INDEX IF NOT EXISTS idx_habit_logs_date ON habit_logs(date);
 CREATE INDEX IF NOT EXISTS idx_habit_logs_habit_id ON habit_logs(habit_id);
-CREATE INDEX IF NOT EXISTS idx_numeric_logs_date ON numeric_logs(date);
 
 -- Insert default habits
 INSERT OR IGNORE INTO habits (id, title, description, order_index) VALUES

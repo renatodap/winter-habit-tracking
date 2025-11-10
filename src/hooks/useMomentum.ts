@@ -2,11 +2,12 @@
 import { useState, useEffect, useCallback } from 'react';
 
 export interface MomentumData {
-  todayDeficit: number | null;
-  weeklyAvgDeficit: number;
-  weeklyWeightChange: number;
   currentStreak: number;
   completionRate: number;
+  todayCompleted: number;
+  todayTotal: number;
+  weekCompleted: number;
+  weekTotal: number;
   nextAction: string;
 }
 

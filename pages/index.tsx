@@ -2,12 +2,10 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import HabitItem from '@/components/HabitItem';
-import NumericLog from '@/components/NumericLog';
 import MomentumBanner from '@/components/MomentumBanner';
 import WeeklySummary from '@/components/WeeklySummary';
 import ReminderSetup from '@/components/ReminderSetup';
 import { useHabits } from '@/hooks/useHabits';
-import { useLogs } from '@/hooks/useLogs';
 import { useMomentum } from '@/hooks/useMomentum';
 import { useNotifications } from '@/hooks/useNotifications';
 
@@ -15,7 +13,6 @@ export default function Home() {
   const [showSettings, setShowSettings] = useState(false);
 
   const { habits, loading: habitsLoading, toggleHabit, completeAllHabits } = useHabits();
-  const { todayLog, weeklyLogs, updateLog } = useLogs();
   const { momentum } = useMomentum();
   const {
     permission,
@@ -83,48 +80,6 @@ export default function Home() {
           {/* Momentum Banner */}
           {momentum && <MomentumBanner momentum={momentum} />}
 
-          {/* Numeric Logs */}
-          <div className="bg-white rounded-2xl p-6 shadow-lg">
-            <h2 className="text-lg font-bold text-gray-900 mb-4">Today's Metrics</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              <NumericLog
-                label="Weight"
-                value={todayLog?.weight}
-                unit="kg"
-                icon="⚖️"
-                onUpdate={(value) => updateLog({ weight: value })}
-              />
-              <NumericLog
-                label="Calories"
-                value={todayLog?.calories}
-                unit="cal"
-                icon="🔥"
-                onUpdate={(value) => updateLog({ calories: value })}
-              />
-              <NumericLog
-                label="Protein"
-                value={todayLog?.protein}
-                unit="g"
-                icon="🥩"
-                onUpdate={(value) => updateLog({ protein: value })}
-              />
-              <NumericLog
-                label="Training"
-                value={todayLog?.training_minutes}
-                unit="min"
-                icon="💪"
-                onUpdate={(value) => updateLog({ training_minutes: value })}
-              />
-              <NumericLog
-                label="Sleep"
-                value={todayLog?.sleep_hours}
-                unit="hrs"
-                icon="😴"
-                onUpdate={(value) => updateLog({ sleep_hours: value })}
-              />
-            </div>
-          </div>
-
           {/* Habits Checklist */}
           <div className="bg-white rounded-2xl p-6 shadow-lg">
             <div className="flex items-center justify-between mb-4">
@@ -153,7 +108,13 @@ export default function Home() {
           </div>
 
           {/* Weekly Summary */}
-          {weeklyLogs.length > 0 && <WeeklySummary weeklyLogs={weeklyLogs} />}
+          {momentum && (
+            <WeeklySummary
+              weekCompleted={momentum.weekCompleted}
+              weekTotal={momentum.weekTotal}
+              currentStreak={momentum.currentStreak}
+            />
+          )}
         </main>
 
         {/* Install Prompt (for PWA) */}
