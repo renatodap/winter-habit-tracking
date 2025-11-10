@@ -74,11 +74,7 @@ export function useNotifications() {
               badge: '/badge-72.png',
               tag: `reminder-${reminder.id}`,
               requireInteraction: true,
-              actions: [
-                { action: 'open', title: 'Open App' },
-                { action: 'dismiss', title: 'Dismiss' },
-              ],
-            });
+            } as NotificationOptions);
           }, Math.min(delay, 2147483647)); // Max setTimeout value
         });
     }
