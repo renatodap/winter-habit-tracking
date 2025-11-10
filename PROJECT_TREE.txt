@@ -1,0 +1,196 @@
+winter-habit-tracking/
+│
+├── 📄 Configuration Files (8)
+│   ├── package.json          # Dependencies & scripts
+│   ├── tsconfig.json          # TypeScript configuration
+│   ├── next.config.js         # Next.js configuration
+│   ├── tailwind.config.js     # Tailwind CSS theming
+│   ├── postcss.config.js      # PostCSS setup
+│   ├── .eslintrc.json         # ESLint rules
+│   ├── vercel.json            # Vercel deployment config
+│   ├── .gitignore             # Git ignore rules
+│   └── .env.example           # Environment variables template
+│
+├── 📘 Documentation (6)
+│   ├── README.md              # Main documentation
+│   ├── SETUP.md               # Setup instructions
+│   ├── DEPLOYMENT.md          # Deployment guide
+│   ├── PROJECT_SUMMARY.md     # Technical overview
+│   ├── PROJECT_TREE.txt       # This file
+│   └── QUICKSTART.txt         # Quick reference
+│
+├── 📁 pages/ (Next.js pages)
+│   ├── _app.tsx               # App wrapper with PWA
+│   ├── _document.tsx          # HTML document
+│   ├── index.tsx              # Main application page
+│   │
+│   └── 📁 api/ (API Routes - 5)
+│       ├── habits.ts          # Habit CRUD operations
+│       ├── habit-logs.ts      # Daily completion logs
+│       ├── numeric-logs.ts    # Weight, calories, etc.
+│       ├── momentum.ts        # Stats calculations
+│       └── reminders.ts       # Notification schedule
+│
+├── 📁 src/
+│   ├── 📁 components/ (React Components - 5)
+│   │   ├── HabitItem.tsx      # Individual habit checkbox
+│   │   ├── NumericLog.tsx     # Numeric input widget
+│   │   ├── MomentumBanner.tsx # Status dashboard
+│   │   ├── WeeklySummary.tsx  # Trends display
+│   │   └── ReminderSetup.tsx  # Notification settings
+│   │
+│   ├── 📁 hooks/ (Custom React Hooks - 4)
+│   │   ├── useHabits.ts       # Habit state management
+│   │   ├── useLogs.ts         # Numeric logs state
+│   │   ├── useMomentum.ts     # Momentum calculations
+│   │   └── useNotifications.ts # PWA notifications
+│   │
+│   ├── 📁 lib/ (Utilities)
+│   │   └── db.ts              # Database client & helpers
+│   │
+│   ├── 📁 db/ (Database)
+│   │   └── schema.sql         # SQLite schema + defaults
+│   │
+│   └── 📁 styles/
+│       └── globals.css        # Global styles + Tailwind
+│
+├── 📁 public/ (Static Assets)
+│   ├── manifest.json          # PWA manifest
+│   ├── sw.js                  # Service worker
+│   ├── favicon.ico            # Favicon
+│   └── .gitkeep               # Icon generation guide
+│   
+│   📝 Note: Add these icon files (use realfavicongenerator.net):
+│   ├── icon-72.png
+│   ├── icon-96.png
+│   ├── icon-128.png
+│   ├── icon-144.png
+│   ├── icon-152.png
+│   ├── icon-192.png
+│   ├── icon-384.png
+│   ├── icon-512.png
+│   └── badge-72.png
+│
+└── 📁 scripts/ (Setup Scripts - 2)
+    ├── setup-db.js            # Database initialization
+    └── generate-icons.js      # Icon generation helper
+
+═══════════════════════════════════════════════════════════════
+
+📊 STATISTICS
+
+Total Files:        40
+Lines of Code:      ~3,200+
+Components:         5
+Hooks:              4
+API Routes:         5
+Database Tables:    4
+Documentation:      6
+
+═══════════════════════════════════════════════════════════════
+
+🗄️ DATABASE SCHEMA
+
+Tables:
+  1. habits          → Master list of habits
+  2. habit_logs      → Daily completion records
+  3. numeric_logs    → Weight, calories, protein, etc.
+  4. reminders       → Notification schedule
+
+Default Data:
+  • 11 Winter Arc habits
+  • 2 notification reminders (8 AM, 9 PM)
+
+═══════════════════════════════════════════════════════════════
+
+🔄 DATA FLOW
+
+User Interaction
+     ↓
+React Component (with custom hook)
+     ↓
+API Route (Next.js serverless function)
+     ↓
+Database (Turso SQLite)
+     ↓
+Response back to hook
+     ↓
+Optimistic UI Update (instant feedback)
+
+Offline Support:
+  Service Worker → Cache → Offline functionality
+
+═══════════════════════════════════════════════════════════════
+
+🎨 STYLING ARCHITECTURE
+
+Base:           Tailwind CSS utility classes
+Theme:          Winter Arc blue gradient palette
+Responsiveness: Mobile-first breakpoints
+Animations:     CSS transitions + transforms
+Layout:         Flexbox + Grid
+Typography:     System font stack
+
+═══════════════════════════════════════════════════════════════
+
+⚙️ TECHNOLOGY STACK
+
+Frontend:
+  • Next.js 14       - React framework
+  • React 18         - UI library
+  • TypeScript 5     - Type safety
+  • Tailwind CSS 3.4 - Styling
+
+Backend:
+  • Next.js API      - Serverless functions
+  • Turso (LibSQL)   - Serverless SQLite
+
+PWA:
+  • Service Worker   - Offline caching
+  • Web Manifest     - Installability
+  • Push API         - Notifications
+
+Development:
+  • ESLint           - Code linting
+  • TypeScript       - Type checking
+
+Deployment:
+  • Vercel           - Hosting platform
+  • Git              - Version control
+
+═══════════════════════════════════════════════════════════════
+
+📦 NPM DEPENDENCIES
+
+Production:
+  • next            - Next.js framework
+  • react           - React library
+  • react-dom       - React DOM bindings
+  • @libsql/client  - Turso database client
+  • date-fns        - Date utilities
+  • zustand         - State management
+
+Development:
+  • typescript      - TypeScript compiler
+  • tailwindcss     - Utility CSS framework
+  • autoprefixer    - CSS vendor prefixes
+  • postcss         - CSS processing
+  • @types/*        - TypeScript definitions
+
+═══════════════════════════════════════════════════════════════
+
+🚀 DEPLOYMENT TARGETS
+
+Supported Platforms:
+  ✓ Vercel (recommended, optimized)
+  ✓ Netlify
+  ✓ Cloudflare Pages
+  ✓ Self-hosted Node.js
+
+Database Options:
+  ✓ Turso (recommended, serverless)
+  ✓ Cloudflare D1
+  ✓ PlanetScale with adapter
+  ✓ Self-hosted with modifications
+
+═══════════════════════════════════════════════════════════════
