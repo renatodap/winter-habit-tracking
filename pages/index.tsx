@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Winter Arc Habit Tracker</title>
+        <title>Habit Tracker</title>
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
@@ -37,9 +37,9 @@ export default function Home() {
         <header className="bg-white shadow-sm sticky top-0 z-10">
           <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Winter Arc</h1>
+              <h1 className="text-2xl font-bold text-gray-900">Habits</h1>
               <p className="text-sm text-gray-600">
-                {completedCount} of {totalCount} completed ({completionPercentage}%)
+                {completedCount} of {totalCount} completed
               </p>
             </div>
             <button
@@ -83,12 +83,12 @@ export default function Home() {
           {/* Habits Checklist */}
           <div className="bg-white rounded-2xl p-6 shadow-lg">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-bold text-gray-900">Daily Habits</h2>
+              <h2 className="text-lg font-bold text-gray-900">Today</h2>
               <button
                 onClick={completeAllHabits}
                 className="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
               >
-                Check All
+                Complete All
               </button>
             </div>
 
@@ -116,15 +116,6 @@ export default function Home() {
             />
           )}
         </main>
-
-        {/* Install Prompt (for PWA) */}
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/20 to-transparent pointer-events-none">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-xs text-gray-600 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 inline-block">
-              💡 Add to Home Screen for the best experience
-            </p>
-          </div>
-        </div>
       </div>
     </>
   );

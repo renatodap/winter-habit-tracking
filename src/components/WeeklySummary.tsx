@@ -9,7 +9,6 @@ interface WeeklySummaryProps {
 
 export default function WeeklySummary({ weekCompleted, weekTotal, currentStreak }: WeeklySummaryProps) {
   const completionRate = weekTotal > 0 ? Math.round((weekCompleted / weekTotal) * 100) : 0;
-  const daysTracked = Math.floor(weekTotal / 11); // Assuming 11 habits per day
 
   return (
     <div className="bg-white rounded-2xl p-6 shadow-lg">
@@ -38,11 +37,6 @@ export default function WeeklySummary({ weekCompleted, weekTotal, currentStreak 
           </span>
         </div>
 
-        {/* Days tracked */}
-        <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-          <span className="text-sm font-medium text-gray-700">Days Tracked</span>
-          <span className="text-lg font-bold text-gray-900">{daysTracked} / 7</span>
-        </div>
       </div>
     </div>
   );
