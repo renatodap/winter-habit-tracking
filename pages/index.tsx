@@ -24,7 +24,6 @@ export default function Home() {
   // Calculate completion stats
   const completedCount = habits.filter(h => h.completed).length;
   const totalCount = habits.length;
-  const completionPercentage = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
 
   return (
     <>
